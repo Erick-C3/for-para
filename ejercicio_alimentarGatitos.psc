@@ -24,16 +24,32 @@ Algoritmo alimentarGatitos
 	definir alimentarMismoTiempo como entero;
 	alimentarMismoTiempo = 0;
 	
+	definir casoEspecial como logico;
+	casoEspecial = falso;
+	
 	escribir "Ingrese la cantidad de michis que tiene";
-	leer gatosTotales;// 5
+	leer gatosTotales;// 13
 	
 	escribir "Ingrese la cantidad de michis que ya comieron";
-	leer gatosComieron;
+	leer gatosComieron;// 2
 	
 	escribir "Ingresar la cantidad de michis a alimentar al mismo tiempo";
-	leer alimentarMismoTiempo; // 1
+	leer alimentarMismoTiempo; // 9
+	
+	
+	
+	si (((gatosTotales-gatosComieron) % alimentarMismoTiempo)  <> 0) Entonces
+		casoEspecial = verdadero;
+	FinSi
+	
 	
 	para iterador = 1 hasta (gatosTotales-gatosComieron) con paso alimentarMismoTiempo Hacer
+		
+		
+		si casoEspecial Y (iterador + alimentarMismoTiempo) > (gatosTotales-gatosComieron) Entonces
+			alimentarMismoTiempo = (gatosTotales-gatosComieron) - (iterador -1) ;
+		FinSi
+		
 		
 		si alimentarMismoTiempo <> 1 Entonces
 			escribir "Alimento a " alimentarMismoTiempo " gatos";
